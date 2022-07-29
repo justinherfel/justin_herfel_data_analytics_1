@@ -1,6 +1,6 @@
 # justin_herfel_data_analytics_1
 
-1. Make sure matplotlib, pandas and numpy is installed on your computer.
+1. Make sure matplotlib, pandas and numpy are installed on your computer.
 
 2. Read in data from a local csv, excel file, json, or any other file type.
     - I will use a csv file from which I will pull data to make a bar chart. So far I have acquired a dataset for 2020 through 2040. I am still looking for a data set for 1920 through 1940. (This is complete)
