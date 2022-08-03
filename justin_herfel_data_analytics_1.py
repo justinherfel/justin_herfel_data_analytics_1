@@ -15,11 +15,21 @@ print(population)
 x_axis = population["State"]
 y_axis = population["2020"]
 
-plt.figure(figsize=(12,6))
+# Layout 2x1
+plt.figure(figsize=(12, 8))
+
+plt.subplot(211)
 plt.bar(x_axis, y_axis, color='green')
 plt.xlabel('Top 5 States')
 plt.ylabel('Population in Tens of Millions')
 plt.title('Top 5 State Populations in 2020')
+
+plt.subplot(212)
+plt.bar(x_axis, y_axis, color='green')
+plt.xlabel('Top 5 States')
+plt.ylabel('Population in Tens of Millions')
+plt.title('Top 5 State Populations in 2020')
+
 plt.show()
 
 
