@@ -5,7 +5,9 @@ import os
 df = pd.read_csv(os.path.join(
   os.path.dirname(__file__), 'assets', 'NationalProjections_ProjectedTotalPopulation_2020_2040_Updated12_2018.csv'))
 
-df['2040'] = df['2040'].replace(",", "")
+df['2040'] = df['2040'].str.replace(",", "")
+df['2040'] = df['2040'].astype('int')
+print(df.dtypes)
 population = df.nlargest(5, '2040')
 print(population)
 
