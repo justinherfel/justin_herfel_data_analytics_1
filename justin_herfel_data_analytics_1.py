@@ -14,11 +14,11 @@ def data_cleanup(df):
 
 def data_massage(df, column):
     df = df.nlargest(5, column)
-    # Maybe create a separate function to go through and compare 1920 state data to 2020 state data
-    # 2020/1920 = possible or google percentage change
     df[column] = df[column]/1000000
     return df
 
+# Maybe create a separate function to go through and compare 1920 state data to 2020 state data
+# 2020/1920 = possible or google percentage change
 # Potential new formula for finding percent increase between 2020 & 1920
 def percent_change(df, column):
     df[column] = df[column]
@@ -50,7 +50,7 @@ y_axis3 = population2["2040"]
 plt.figure(figsize=(12, 8))
 
 plt.subplot(311)
-plt.bar(x_axis1, y_axis1, color='green')
+plt.bar(x_axis1, y_axis1, color='blue')
 plt.xlabel('Top 5 States')
 plt.ylabel('Population in Millions')
 plt.title('Top 5 State Populations in 1920')
@@ -62,7 +62,7 @@ plt.ylabel('Population in Millions')
 plt.title('Top 5 State Populations in 2020')
 
 plt.subplot(313)
-plt.bar(x_axis3, y_axis3, color='green')
+plt.bar(x_axis3, y_axis3, color='purple')
 plt.xlabel('Top 5 States')
 plt.ylabel('Population in Millions')
 plt.title('Top 5 State Populations in 2040')
