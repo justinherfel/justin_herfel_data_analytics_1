@@ -1,6 +1,7 @@
+import os
 import matplotlib.pyplot as plt
 import pandas as pd
-import os
+
 
 def data_cleanup(df):
     for column in df:
@@ -10,12 +11,14 @@ def data_cleanup(df):
             df[column] = df[column].astype('int')
     return df
 
+
 def data_massage(df, column):
     df = df.nlargest(5, column)
     # Maybe create a separate function to go through and compare 1920 state data to 2020 state data
     # 2020/1920 = possible or google percentage change
     df[column] = df[column]/1000000
     return df
+
 
 df = pd.read_csv(os.path.join(
     os.path.dirname(__file__), 'assets', 'NationalProjections_ProjectedTotalPopulation_2020_2040_Updated12_2018.csv'))
