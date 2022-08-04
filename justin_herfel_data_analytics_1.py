@@ -19,6 +19,10 @@ def data_massage(df, column):
     df[column] = df[column]/1000000
     return df
 
+# Potential new formula for finding percent increase between 2020 & 1920
+def percent_change(df, column):
+    df[column] = df[column]
+    pass
 
 df = pd.read_csv(os.path.join(
     os.path.dirname(__file__), 'assets', 'NationalProjections_ProjectedTotalPopulation_2020_2040_Updated12_2018.csv'))
@@ -45,22 +49,22 @@ y_axis3 = population2["2040"]
 # Layout 2x1
 plt.figure(figsize=(12, 8))
 
-plt.subplot(211)
+plt.subplot(311)
 plt.bar(x_axis1, y_axis1, color='green')
 plt.xlabel('Top 5 States')
 plt.ylabel('Population in Millions')
 plt.title('Top 5 State Populations in 1920')
 
-plt.subplot(212)
+plt.subplot(312)
 plt.bar(x_axis2, y_axis2, color='green')
 plt.xlabel('Top 5 States')
 plt.ylabel('Population in Millions')
 plt.title('Top 5 State Populations in 2020')
 
-# plt.subplot(221)
-# plt.bar(x_axis3, y_axis3, color='green')
-# plt.xlabel('Top 5 States')
-# plt.ylabel('Population in Millions')
-# plt.title('Top 5 State Populations in 2040')
+plt.subplot(313)
+plt.bar(x_axis3, y_axis3, color='green')
+plt.xlabel('Top 5 States')
+plt.ylabel('Population in Millions')
+plt.title('Top 5 State Populations in 2040')
 
 plt.show()
