@@ -36,13 +36,11 @@ website_list = pd.read_html(
 df_1920_pop = website_list[2]
 df_1920_pop = df_1920_pop.sort_values(by=['State'], ignore_index=True)
 
-# initialize data of lists.
 data = {'State': df["State"],
         '1920': df_1920_pop["Population as of1920 census"],
         '2020': df["2020"],
         '2040': df["2040"]}
 
-# Create DataFrame
 my_data = pd.DataFrame(data)
 my_data = data_cleanup(my_data)
 my_data["percent_change"] = " "
