@@ -2,7 +2,6 @@ import os
 import matplotlib.pyplot as plt
 import pandas as pd
 
-
 def data_cleanup(df):
     for column in df:
         if column != "State" and df[column].dtype != 'int64':
@@ -12,24 +11,22 @@ def data_cleanup(df):
 
 def data_massage(df):
     for column in df:
-        if  df[column].dtype == 'int64':
+        if df[column].dtype == 'int64':
             df[column] = df[column]/1000000
     return df
 
 def percent_change(df):
-
-    """Potential new formula for finding percent increase between 2020 & 1920
-    :param df: dataframe to calculate percantage change of data"""
+    """Formula for finding percent increase (or decrease) between 2020 & 1920
+    :param df: dataframe to calculate percentage change of data"""
 
     for i, row in df.iterrows():
         percentage_change = 0
         if row["2020"] > row["1920"]:
             percentage_change = ((row["2020"]-row["1920"])/row["1920"])*100
         elif row["2020"] < row["1920"]:
-            percentage_change = -(((row["1920"]-row["2020"])/row["1920"])*100) 
-        df.at[i,'percent_change'] = percentage_change
+            percentage_change = -(((row["1920"]-row["2020"])/row["1920"])*100)
+        df.at[i, 'percent_change'] = percentage_change
     return df
-
 
 df = pd.read_csv(os.path.join(
     os.path.dirname(__file__), 'assets', 'NationalProjections_ProjectedTotalPopulation_2020_2040_Updated12_2018.csv'))
@@ -37,35 +34,21 @@ df = pd.read_csv(os.path.join(
 website_list = pd.read_html(
     'https://en.wikipedia.org/wiki/1920_United_States_census')
 df_1920_pop = website_list[2]
-df_1920_pop = df_1920_pop.sort_values(by=['State'], ignore_index = True)
-# df_1920_pop = data_massage(df_1920_pop, "Population as of1920 census")
-# print(df_1920_pop)
-# x_axis1 = df_1920_pop["State"]
-# y_axis1 = df_1920_pop["Population as of1920 census"]
-# print(df.dtypes)
-
-# df = data_cleanup(df)
-
-# population2 = data_massage(df, "2020")
-# # print(population2)
-# x_axis2 = population2["State"]
-# y_axis2 = population2["2020"]
-# population_2040 = data_massage(df, '2040')
-# x_axis3 = population2["State"]
-# y_axis3 = population2["2040"]
+df_1920_pop = df_1920_pop.sort_values(by=['State'], ignore_index=True)
 
 # initialize data of lists.
 data = {'State': df["State"],
-        '1920': df_1920_pop["Population as of1920 census"], 
+        '1920': df_1920_pop["Population as of1920 census"],
         '2020': df["2020"],
         '2040': df["2040"]}
 
 # Create DataFrame
 my_data = pd.DataFrame(data)
-my_data = data_cleanup(my_data) 
+my_data = data_cleanup(my_data)
 my_data["percent_change"] = " "
 my_data = percent_change(my_data)
 my_data = data_massage(my_data)
+
 # Print the output.
 print(my_data)
 
@@ -88,8 +71,7 @@ y_axis3 = data_2040["2040"]
 x_axis4 = data_percent_change["State"]
 y_axis4 = data_percent_change["percent_change"]
 
-
-# Layout 2x1
+# Layout 4x1
 plt.figure(figsize=(12, 8))
 
 plt.subplot(411)
