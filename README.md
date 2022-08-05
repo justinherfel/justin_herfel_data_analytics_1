@@ -1,6 +1,6 @@
 # justin_herfel_data_analytics_1
 
-## Before running this project, please make sure matplotlib and pandas are installed on your computer.
+## Before running this project, please make sure os, matplotlib and pandas are installed on your computer.
 
 1. Read in data from a local csv, excel file, json, or any other file type.
     - I used an a file from the University of Virginia Weldon Cooper Center for Public Service (https://demographics.coopercenter.org/national-population-projections/). I converted that file to a CSV, which I placed in the assets folder in the Git repository. I converted the file so that the numbers would be converted to objects that I would have to clean, outlined in bullet point 2 below. (This is complete)
